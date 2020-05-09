@@ -50,4 +50,15 @@ class SiteController extends Controller
         ]);
         return redirect()->route('contact')->with('success', 'Xabar uchun raxmat.');
     }
+    public function search(Request $request)
+    {
+        $key = $request->get('key');
+        $key = '%'.trim($key).'%';
+        $results = Post::where('title', 'LIKE', $key)
+                         ->orWhere('short', 'LIKE', $key)
+                         ->orWhere('content', 'LIKE', $key)
+                         ->paginate(5);
+        $links = $results->links();
+        return view('search', compact('results', 'links'));
+    }
 }

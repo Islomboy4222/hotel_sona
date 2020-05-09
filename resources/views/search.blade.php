@@ -8,24 +8,20 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
                         <h2>Blog</h2>
-                        <div class="bt-option">
-                            <a href="{{ route('home') }}">Home</a>
-                            <span>Blog Grid</span>
-                            <aside class="single_sidebar_widget search_widget">
-                                <form method="GET" action="{{route('search')}}">
-                                    <div class="form-group">
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" name="key" placeholder="Qidiruv...">
-                                            <!-- <div class="input-group-append">
-                                                <button class="btn" type="button"><i class="ti-search"></i></button>
-                                            </div> -->
+                        <aside class="single_sidebar_widget search_widget">
+                            <form method="GET" action="{{route('search')}}">
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" name="key" placeholder="Qidiruv..." >
+                                        <div class="input-group-append">
+                                            <button class="btn" type="button"><i class="ti-search"></i></button>
                                         </div>
                                     </div>
-                                    <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                                        type="submit">Izlash</button>
-                                </form>
-                            </aside>
-                        </div>
+                                </div>
+                                <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                    type="submit">Search</button>
+                            </form>
+                        </aside>
                     </div>
                 </div>
             </div>
@@ -36,7 +32,7 @@
     <section class="blog-section blog-page spad">
         <div class="container">
             <div class="row">
-                @foreach($posts as $post)
+                @foreach($results as $post)
                     <div class="col-lg-4 col-md-6">
                         <div class="blog-item set-bg" data-setbg="img/blog/blog-1.jpg">
                                 <div class="bi-text">
@@ -55,8 +51,8 @@
                                     </ul> -->
                                 </div>
                             <nav class="blog-pagination justify-content-center d-flex">
-                                {{$links}}
-                            </nav> 
+                                {{$results->links()}}
+                            </nav>
                         </div>
                     </div>
                 @endforeach
