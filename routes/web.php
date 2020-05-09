@@ -21,7 +21,7 @@ Route::get('/news', 'SiteController@news')->name('news');
 Route::get('/news-more/{id}', 'SiteController@newsMore')->name('news-more');
 //Contact page
 Route::get('/contact', 'SiteController@contact')->name('contact');
-Route::get('/contact', 'SiteController@');
+Route::post('/contact', 'SiteController@feedbackStore')->name('contact.store');
 //Admin routes
 Route::namespace('Admin')->middleware('auth')->name('admin.')->prefix('admin')->group(function() {
     Route::resource('posts', 'PostsController');
