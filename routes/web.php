@@ -22,11 +22,13 @@ Route::get('/news-more/{id}', 'SiteController@newsMore')->name('news-more');
 //Contact page
 Route::get('/contact', 'SiteController@contact')->name('contact');
 Route::post('/contact', 'SiteController@feedbackStore')->name('contact.store');
-//Search
 Route::get('/search', 'SiteController@search')->name('search');
 //Admin routes
 Route::namespace('Admin')->middleware('auth')->name('admin.')->prefix('admin')->group(function() {
     Route::resource('posts', 'PostsController');
+    Route::get('feedbacks', 'FeedbacksController@index')->name('feedbacks.index');
+    Route::get('feedbacks/{id}/show', 'FeedbacksController@show')->name('feedbacks.show');
+    Route::delete('feedbacks/{id}/delete', 'FeedbacksController@delete')->name('feedbacks.delete');
 });
 Auth::routes([
     'register' => false
